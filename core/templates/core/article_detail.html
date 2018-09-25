@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load highlight_code %}
+
+{% block content %}
+    <div class="article">
+        <h2>{{ object.title }}</h2>
+        </br>
+        {{ object.body|highlighter|safe }}
+    </div>
+{% endblock content %}

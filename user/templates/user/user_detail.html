@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="user">
+    <h1>My profile</h1></br>
+    <p><strong>My email: </strong> {{ object.email }}</p>
+    <p><strong>My username: </strong> {{ object.username }}</p>
+    <p><strong>My articles:</strong></p>
+    <ul>
+        {% for article in articles %}
+        <li>
+            <strong> 
+                <a href=/articles/{{article.id}}>{{article.title}} </a>
+                
+            </strong>
+            ({{article.publication_date}}) |
+            <a href=/user/editor/{{article.id}}>edit</a> 
+        </li> 
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
