@@ -4,6 +4,8 @@ from django.views.generic import ListView, DetailView, FormView
 from django.contrib.auth.models import User
 from core.models import Article
 from .forms import EditorForm
+from django.contrib.auth import views as auth_views
+from django.contrib.auth import logout
 
 
 class UserDetailView(DetailView):
@@ -46,3 +48,15 @@ class EditorDetailView(FormView, DetailView):
         obj.body = form.cleaned_data['body']
         obj.save()
         return super().form_valid(form)
+
+
+class MyLoginView(auth_views.LoginView):
+
+    def get_redirect_url(self):
+        return '/articles/'
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/articles/')
+    
