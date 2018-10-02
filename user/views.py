@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, UpdateView
 from django.contrib.auth.models import User
 from core.models import Article
 from .forms import EditorForm
@@ -20,7 +20,7 @@ class UserDetailView(DetailView):
         return context
 
 
-class EditorDetailView(FormView, DetailView):
+class EditorDetailView(UpdateView):
     model = Article
     
     form_class = EditorForm
@@ -34,20 +34,23 @@ class EditorDetailView(FormView, DetailView):
         return context
 
     def get_success_url(self):
-        # breakpoint()
         return (str(self.kwargs['pk']))
-        # pass
 
-    def post(self, request, *args, **kwargs):
-        return FormView.post(self, request, *args, **kwargs)
+    # def post(self, request, *args, **kwargs):
+    #     # obj = self.get_object()
+    #     form = self.get_form()
+    #     # obj.save()
+    #     return self.form_valid(form)
 
-    def form_valid(self, form):
-        # import pdb; pdb.set_trace()
-        obj = self.get_object()
-        obj.title = form.cleaned_data['title']
-        obj.body = form.cleaned_data['body']
-        obj.save()
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     obj = self.get_object()
+    #     obj.title = form.data.get('title')
+    #     obj.body = form.data.get('body') if form.data.get('body') != '' else ' '
+    #     # form.data['body'] = ' '
+    #     # brea  kpoint()
+    #     # obj.body = form.cleaned_data['body']  if form.cleaned_data['body'] !=
+    #     obj.save()
+    #     return super().form_valid(form)
 
 
 class MyLoginView(auth_views.LoginView):

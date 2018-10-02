@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
+
+
 {% block content%}
 <form  method="post">
     {% csrf_token %}
-    {{form.title.label}}:
+    {{form.media}}
+    {{form.as_p}}
+    <!-- {{form.title.label}}:
     {{form.title|linebreaks}}
     {{form.body.label}}: </br>
-    {{form.body}} </br>
+    {{form.body}} </br> -->
     <input type="submit" value="Save Article"/>
 </form>
 {% endblock %}

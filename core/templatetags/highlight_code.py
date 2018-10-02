@@ -3,7 +3,7 @@ import re
 from pygments import lexers, formatters, highlight
 
 register = template.Library()
-regex = re.compile(r'<pre(.*?)>(.*?)</pre>', re.DOTALL)
+regex = re.compile(r'<code(.*?)>(.*?)</code>', re.DOTALL)
 
 
 @register.filter(is_safe=True)

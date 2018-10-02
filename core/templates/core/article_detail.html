@@ -2,9 +2,9 @@
 {% load highlight_code %}
 
 {% block content %}
-    <div class="article">
-        <h2>{{ object.title }}</h2>
+    <div >
+        <h2 class="border-left border-info" style="padding-left:10px;border-left-width:3em">{{ object.title }}</h2>
         </br>
-        {{ object.body|highlighter|safe }}
+        {{ object.body|safe }}
     </div>
 {% endblock content %}
