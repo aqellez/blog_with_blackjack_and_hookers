@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<p>Searching in tags and titles of articles by keyword: <u>{{search_word}}</u></p>
+{% for article in object_list %}
+<h3><a href=/articles/{{article.id}}>{{article.title}}</a></h3>
+<p>{{ article.publication_date }}</p>
+
+
+
+{% endfor%}
+
+{% endblock %}

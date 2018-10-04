@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'core',
     'user',
+    'search',
 ]
 
 MIDDLEWARE = [
@@ -149,7 +150,7 @@ CKEDITOR_CONFIGS = {
                        'Language']},
             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
             {'name': 'insert',
-             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+             'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
             '/',
             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
@@ -167,28 +168,13 @@ CKEDITOR_CONFIGS = {
         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
         'height': 291,
         'width': '100%',
-        'codeSnippet_theme': 'railscasts',
-        # 'filebrowserWindowHeight': 725,
-        # 'filebrowserWindowWidth': 940,
+        'codeSnippet_theme': 'obsidian',
         # 'toolbarCanCollapse': True,
         # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
-            # your extra plugins here
-            # 'div',
+            'uploadimage', 
             'codesnippet',
-            # 'autolink',
-            # 'autoembed',
-            # 'embedsemantic',
-            # 'autogrow',
-            # 'devtools',
-            # 'widget',
-            # 'lineutils',
-            # 'clipboard',
-            # 'dialog',
-            # 'dialogui',
-            # 'elementspath'
         ]),
     }
 }

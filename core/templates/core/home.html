@@ -2,14 +2,11 @@
 
 {% block content %}
 {% for article in object_list %}
-<div class="article ">
-    <div class="date">
-        <!-- {{ article.published_date }} -->
-    </div>
-    <h2>
+<div class="article border-bottom">
+    <h3>
         <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
-    </h2>
-            <p  >date: {{ article.publication_date }} </p>
+    </h3>
+    <p>date: {{ article.publication_date }}, author: <a href="/user/{{article.author}}">{{article.author}}</a></p>
     <p>tags:
         {% for tag in article.tags.all %}
         <span class="badge badge-secondary">{{tag}}</span>
@@ -26,7 +23,6 @@
     <ul class="pagination">
         {% if page_obj.has_previous %}
         <li class="page-item">
-            <!-- <a class="page-link" href="#" tabindex="-1">Previous</a> -->
             <a class="page-link" href="/articles?page={{ page_obj.previous_page_number }}">Previous</a>
         </li>
         {% else %}
