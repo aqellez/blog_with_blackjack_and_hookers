@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 
 from django.views.generic import ListView, DetailView, FormView, UpdateView, DeleteView
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 from core.models import Article
 from .forms import EditorForm
 from django.contrib.auth import views as auth_views
@@ -16,8 +16,8 @@ class UserDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
-        user_id = kwargs['object'].id
-        context['articles'] = Article.objects.filter(author__id=user_id)
+        articles = Article.objects.filter(author=kwargs['object'].id)
+        context['articles'] = articles
         return context
 
 

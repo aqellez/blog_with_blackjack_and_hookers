@@ -12,6 +12,4 @@ urlpatterns = [
     path('delete/<int:pk>/', EditorDeleteView.as_view(), name='editor_delete'),
     path('<str:slug>/', UserDetailView.as_view(), name='user_info'),
     path('editor/<int:pk>/', EditorUpdateView.as_view() , name='user_articles'),
-    
-    
 ]

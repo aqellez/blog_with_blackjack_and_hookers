@@ -11,10 +11,9 @@
         <li>
             <strong> 
                 <a href=/articles/{{article.id}}>{{article.title}} </a>
-                
             </strong>
             ({{article.publication_date}}) 
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             |
             <a href=/user/editor/{{article.id}}>edit</a> |
             <a href=/user/delete/{{article.id}}>delete</a> 
