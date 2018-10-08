@@ -1,17 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div >
+    <div class="article" >
         <h2 class="border-left border-info" style="padding-left:10px;border-left-width:3em">
             {{ object.title }}
         </h2>
-        {{object.publication_date}}
+        {{object.publication_date}}, <a href="/user/{{object.author}}">{{object.author}} </a>
         </br>
         {% for tag in article.tags.all %}
             <span class="badge badge-secondary">{{tag}}</span>
         {% endfor %}
         </br>
-    </br>
+        </br>
         {{ object.body|safe }}
+    </div>
+
+    <div class="comments">
+        {% for comment in comments %}
+        <p>
+            <a href="/user/{{comment.author}}">{{comment.author}} </a>
+             ({{comment.publication_date}}):
+        </p>
+        <p><i>{{comment.body}}</i></p>
+        </br>
+            
+        {% empty %}
+            <p>No comments</p>
+        {% endfor %}
     </div>
 {% endblock content %}

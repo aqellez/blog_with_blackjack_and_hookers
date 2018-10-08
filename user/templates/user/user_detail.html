@@ -3,23 +3,25 @@
 {% block content %}
 <div class="user">
     <h1>Profile</h1></br>
-    <p><strong>Email: </strong> {{ object.email }}</p>
-    <p><strong>Username: </strong> {{ object.username }}</p>
+    <p><strong>Email: </strong> <i> {{ object.email }}</i></p>
+    <p><strong>Username: </strong> <i> {{ object.username }}</i></p>
     <p><strong>Articles:</strong></p>
     <ul>
         {% for article in articles %}
-        <li>
+        <li >
             <strong> 
-                <a href=/articles/{{article.id}}>{{article.title}} </a>
+                <a style="color:#323232" href=/articles/{{article.id}}>{{article.title}} </a>
             </strong>
             ({{article.publication_date}}) 
             {% if request.user.is_authenticated %}
-            |
-            <a href=/user/editor/{{article.id}}>edit</a> |
-            <a href=/user/delete/{{article.id}}>delete</a> 
+                | <a href=/user/editor/{{article.id}}>edit</a> |
+                <a href=/user/delete/{{article.id}}>delete</a> 
             {% endif %}
         </li> 
+        {% empty %}
+            <p>Author doesn't has articles yet.</p>
         {% endfor %}
     </ul>
+    <h4><a href="/user/editor/new/">Create new article</a></h4>
 </div>
 {% endblock content %}

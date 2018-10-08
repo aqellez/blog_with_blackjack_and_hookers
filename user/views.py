@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 
-from django.views.generic import ListView, DetailView, FormView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, FormView, UpdateView, DeleteView, CreateView
 from django.contrib.auth.models import User, AnonymousUser
 from core.models import Article
 from .forms import EditorForm
@@ -21,6 +21,16 @@ class UserDetailView(DetailView):
         return context
 
 
+class EditorCreateView(CreateView):
+    model = Article
+    form_class = EditorForm
+    template_name = 'user/editor_detail.html'
+
+    def get_success_url(self):
+        # breakpoint()
+        return ("/user/" + str(self.request.user.username))
+
+
 class EditorUpdateView(UpdateView):
     model = Article
     form_class = EditorForm
@@ -33,7 +43,7 @@ class EditorUpdateView(UpdateView):
         return context
 
     def get_success_url(self):
-        return (str(self.kwargs['pk']))
+        return ("/articles/" + str(self.kwargs['pk']))
 
 
 class EditorDeleteView(DeleteView):
