@@ -130,7 +130,6 @@ STATICFILES_DIRS = [
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
-        # 'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
@@ -164,13 +163,10 @@ CKEDITOR_CONFIGS = {
 
             ]},
         ],
-        'toolbar': 'full',  # put selected toolbar config here
-        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+        'toolbar': 'full', 
         'height': 291,
         'width': '100%',
         'codeSnippet_theme': 'obsidian',
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
             'uploadimage', 

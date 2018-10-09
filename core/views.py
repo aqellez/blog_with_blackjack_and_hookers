@@ -8,9 +8,9 @@ from .models import Article, Comment
 
 class ArticleListView(ListView):
     model = Article
-    template_name = 'core/home.html'
+    template_name = 'core/articles_list.html'
 
-   
+
 class ArticleDetailView(DetailView):
     model = Article
     template_name = 'core/article_detail.html'

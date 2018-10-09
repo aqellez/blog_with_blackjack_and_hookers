@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
 from django.views.generic import ListView
 from core.models import Article
 from django.db.models.functions import Substr, StrIndex, Concat
@@ -12,17 +11,13 @@ class SearchResultListView(ListView):
     template_name = 'search/search_list.html'
 
     def get_queryset(self):
-        # breakpoint()
         try:
             word = self.request.GET['search_word']
         except:
             word = ""
         q1 = Article.objects.filter(title__icontains=word)
         q2 = Article.objects.select_related().filter(tags__word__icontains=word)
-        q3 = (q1 | q2 ).distinct()
-        print("asd")
-        
-
+        q3 = (q1 | q2).distinct()
         return q3
 
     def get_context_data(self, **kwargs):
@@ -33,6 +28,3 @@ class SearchResultListView(ListView):
             word = ""
         context['search_word'] = word
         return context
-        
-
-    
