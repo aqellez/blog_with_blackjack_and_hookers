@@ -58,7 +58,7 @@ ROOT_URLCONF = 'blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -163,13 +163,13 @@ CKEDITOR_CONFIGS = {
 
             ]},
         ],
-        'toolbar': 'full', 
+        'toolbar': 'full',
         'height': 291,
         'width': '100%',
         'codeSnippet_theme': 'obsidian',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
-            'uploadimage', 
+            'uploadimage',
             'codesnippet',
         ]),
     }

@@ -1,9 +1,5 @@
-from django.shortcuts import render
-
 from django.views.generic import ListView
 from core.models import Article
-from django.db.models.functions import Substr, StrIndex, Concat
-from django.db.models import Value as V
 
 
 class SearchResultListView(ListView):
@@ -11,9 +7,9 @@ class SearchResultListView(ListView):
     template_name = 'search/search_list.html'
 
     def get_queryset(self):
-        try:
+        if self.request.GET['search_word'] is not None:
             word = self.request.GET['search_word']
-        except:
+        else:
             word = ""
         q1 = Article.objects.filter(title__icontains=word)
         q2 = Article.objects.select_related().filter(tags__word__icontains=word)
@@ -22,9 +18,9 @@ class SearchResultListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        try:
+        if self.request.GET['search_word'] is not None:
             word = self.request.GET['search_word']
-        except:
+        else:
             word = ""
         context['search_word'] = word
         return context

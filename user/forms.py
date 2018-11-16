@@ -1,6 +1,7 @@
-from django import forms
-from core.models import Article
 from ckeditor.widgets import CKEditorWidget
+from django import forms
+
+from core.models import Article
 
 
 class EditorForm(forms.ModelForm):
